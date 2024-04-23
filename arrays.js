@@ -1,4 +1,5 @@
 
+
 const arr = [1,2,3,4];
 
 // To log the initial array values
@@ -126,3 +127,21 @@ for(const item in arr) {
 }
 
 
+
+// PRACTICE QUESTION
+// Write an effective algorithm to regenerate a new array that does not have duplicates
+
+//Solution 1
+const array7 = [2, 4, 8, 8, 7, 3, 2];
+const newArray = [];
+
+for (let i = 0; i < array7.length; i++) {
+  if(!newArray.includes(array7[i])) {
+    newArray.push(array7[i])
+  }
+}
+
+console.log(newArray) 
+
+
+//Solution 2
