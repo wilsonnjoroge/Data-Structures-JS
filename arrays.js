@@ -5,3 +5,4 @@ for (const number in arr) {
 }
 
 console.log("first array")
+console.log("Second array")
