@@ -112,6 +112,15 @@ class LinkedList {
     this.length--
     return removedNode.value
   }
+
+
+  removeNode(value) {
+    if(this.isEmpty()) {
+      console.log("The list is empty")
+      return
+    }
+    // Removing first value from the list (value = index 0)
+  }
   
 
   print() {
