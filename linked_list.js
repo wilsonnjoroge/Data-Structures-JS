@@ -62,6 +62,56 @@ class LinkedList {
     }
     this.length++; // Increment the length of the linked list
   }
+
+
+  insert(value, index) {
+    // Inserting at an invalid index 
+    if(index < 0 || index > this.size()) {
+      console.log("Invalid index");
+      return
+    }
+    // Inserting at index 0, the first index
+    if(index === 0) {
+      this.prepend(value)
+    }
+    // Inserting at a valid index and the list is not empty index > 0
+    else {
+      const node = new Nodes(value)
+      let previous = this.head;
+      for(let i = 0; i < index-1; i++) {
+        previous = previous.next;
+      }
+      node.next = previous.next
+      previous.next = node
+      this.length++; // Increment the length by 1
+    }
+  }
+
+  // Remove items from the list
+  remove(index) {
+    // Deleting at an invalid index
+    if(index < 0 || index >= this.size()) {
+      console.log("Invalid index")
+      return
+    }
+    // Deleting at the first index (head 0)
+    let removedNode;
+    if(index === 0) {
+      removedNode = this.head;
+      this.head = this.head.next;
+    }
+    // Deleting at an index when the list is not empty index > 0
+    else{
+      let previous = this.head;
+      for (let i = 0; i < index - 1; i++) {
+        previous = previous.next
+      }
+      removedNode = previous.next;
+      previous.next = removedNode.next
+    }
+    this.length--
+    return removedNode.value
+  }
   
 
   print() {
@@ -115,6 +165,28 @@ linkedList.print();
 linkedList.append(98)
 linkedList.append(99)
 linkedList.print();
+
+// Insert item at a certain position
+linkedList.print();
+linkedList.insert(7, 5)
+linkedList.print();
+
+// Remove item at a certain position
+linkedList.remove(98);
+
+const newList = new LinkedList()
+newList.append(19)
+newList.append(29)
+newList.append(39)
+newList.append(49)
+newList.append(59)
+newList.append(69)
+newList.print();
+newList.remove(0)
+newList.remove(1)
+newList.remove(2)
+newList.print();
+console.log(newList.isEmpty())
 
 
 
