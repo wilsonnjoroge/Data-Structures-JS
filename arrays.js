@@ -129,7 +129,7 @@ for(const item in arr) {
 
 
 // PRACTICE QUESTION
-// Write an effective algorithm to regenerate a new array that does not have duplicates
+// Write an effective algorithm to remove duplicates from an array and return the new array
 
 //Solution 1
 const array7 = [2, 4, 8, 8, 7, 3, 2];
@@ -145,3 +145,16 @@ console.log(newArray)
 
 
 //Solution 2
+const array8 = [2, 4, 8, 8, 7, 3, 2];
+const newArray8 = array8.map(item => item);
+
+for (let i = 0; i < newArray8.length; i++) {
+    const currentItem = newArray8[i];
+    const indexOfItem = newArray8.indexOf(currentItem);
+    if (indexOfItem !== i) {
+        newArray8.splice(indexOfItem, 1);
+        i--; 
+    }
+}
+
+console.log(newArray8); 
