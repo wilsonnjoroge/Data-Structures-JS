@@ -43,14 +43,14 @@ console.log(evenNumbers) // will output [0,2,4]
 
 
 // USE OF REDUCE() METHOD
-// 1. To find maximum in an array using if
+// 1. To find maximum in an array using tenary operator
  const max = arr.reduce((max, current) => {
   return current > max ? current : max
  }, arr[0])
 
  console.log(max) // will output 5
 
- // 2. To find maximum in an array using tenary operator
+ // 2. To find maximum in an array using if
  const maxx = arr.reduce((maxx, currrent) => {
   
     if(currrent > maxx) {
@@ -158,3 +158,92 @@ for (let i = 0; i < newArray8.length; i++) {
 }
 
 console.log(newArray8); 
+
+
+/*
+When duplicates are removed from an array, and only even numbers are left, 
+array A[3,5,3,6,8,3,8,4] will result to   [ 6, 8, 4 ]. and B [56,45,33,98,67,22] 
+will result to [ 56, 98, 22 ].  Given the  Array C = [2, 4, 8, 8, 7, 5, 5, 3, 2], 
+write an effective algorithm (using array methods) to ensure that the final array 
+is a result containing even numbers and have no duplicates and log the result
+*/
+
+function solution(A) {
+
+  const newArray = []
+  
+  for(let i = 0; i < A.length; i++) {
+    if(!newArray.includes(A[i])) {
+      newArray.push(A[i]);
+    }
+  }
+  const evenArray = newArray.filter(number => {  return number%2 === 0})
+
+  return evenArray
+
+}
+
+console.log(solution([3,5,3,6,8,3,8,4]))
+
+
+/*
+An array of N intergers is shifted K times such that if array A = [28, 30, 32, 33] is rotated 2 times,
+the result will be
+1st -> [33, 28, 30, 32]
+2nd -> [32, 33, 28, 30]
+
+Write an effective algorithm for achieving the same
+
+*/
+ 
+
+function solution(A, K) {
+
+  for(let i = 0; i < K; i++) {
+    let popedItem = A.pop()
+
+    A.unshift(popedItem)
+  }
+
+  return A
+
+}
+
+console.log(solution([28, 30, 32, 33], 2));
+
+// Function to give the index of the first occurence of a certain number
+function solution(A,N) {
+
+  if(!A.includes(N)) {
+    return -1
+  }
+  return A.indexOf(N)
+}
+
+console.log(solution([ 29, 39, 19, 49, 59, 19, 69 ], 19))
+
+
+/*
+ODD OCCURENCES IN AN ARRAY:  [9,3,9,3,9,7,9] = 7
+*/
+
+function solution(A) {
+
+  let counts = {}; 
+
+  for (let i = 0; i < A.length; i++) {
+    if (counts[A[i]] === undefined) {
+      counts[A[i]] = 1; 
+    } else {
+      counts[A[i]]++; 
+    }
+  }
+
+  for (let key in counts) {
+    if (counts[key] % 2 !== 0) {
+      return parseInt(key); 
+    }
+  }
+}
+
+console.log(solution([9,3,9,3,9,7,9]))
