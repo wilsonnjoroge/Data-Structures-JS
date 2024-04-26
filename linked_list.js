@@ -120,6 +120,47 @@ class LinkedList {
       return
     }
     // Removing first value from the list (value = index 0)
+    if(this.head.value === value) {
+      this.head.next = this.head;
+      this.length--
+      console.log("The value has been deleted")
+      return "[" +value+"]"
+    }
+    // Removing value from the list (value > index 0)
+    else {
+      let previous = this.head
+      while(previous.next && previous.next.value !== value) {
+        previous = previous.next
+      }
+      if(previous.next) {
+        let removedNode = previous.next
+        previous.next = removedNode.next
+        this.length--
+        console.log("The value has been deleted")
+        return "[" +value+"]"
+      }
+      console.log("The value to be deleted not found")
+      
+    }
+  }
+
+
+  // Return the first index of a value occurence
+  searchNode(value) {
+    if(this.isEmpty()) {
+      console.log("The list is empty")
+      return -1
+    }
+    let index = 0
+    let current = this.head
+    while(current) {
+      if(current.value === value) {
+        return index
+      }
+        current = current.next
+        index++; 
+    }
+    return -1
   }
   
 
@@ -185,19 +226,32 @@ linkedList.remove(98);
 
 const newList = new LinkedList()
 newList.append(19)
+newList.append(19)
 newList.append(29)
 newList.append(39)
 newList.append(49)
 newList.append(59)
 newList.append(69)
 newList.print();
+
+console.log(newList.searchNode(19))
+console.log(newList.searchNode(1))
+
 newList.remove(0)
 newList.remove(1)
 newList.remove(2)
 newList.print();
 console.log(newList.isEmpty())
+console.log(newList.removeNode(69))
+console.log(newList.removeNode(29))
+console.log(newList.removeNode(49))
+console.log(newList.removeNode(69))
+newList.print();
 
 
 
 
+
+// Remove node from list = linear
+// Remove head from list = constant
 
