@@ -10,6 +10,7 @@ const map = new Map([["a",1],["b",2]])
 
 // To add items to the map use set() method
 map.set("c", 3)
+map.set("d","e")
 
 // To check if the map has a key, use has() method
 console.log(map.has("a"))
